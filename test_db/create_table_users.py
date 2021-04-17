@@ -1,29 +1,22 @@
 import mysql.connector
 import os
-from dotenv import load_dotenv
-load_dotenv()
+from dotenv import dotenv_values
 
-# OR, the same with increased verbosity
-load_dotenv(verbose=True)
-
-# OR, explicitly providing path to '.env'
-from pathlib import Path  # Python 3.6+ only
-env_path = Path('.') / '.env'
-load_dotenv(dotenv_path=env_path)
+config = dotenv_values(".env")
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user=os.getenv("USER"),
-  password=os.getenv("PASSWORD"),
+  user=config['USER'],
+  password=config['PASSWORD'],
   database="RJukebox"
 )
 
 mycursor = mydb.cursor()
 query="""CREATE TABLE users (
+            id INT UNSIGNED AUTO_INCREMENT NOT NULL,
             user VARCHAR(255), 
-            password VARCHAR(255), 
-            token VARCHAR(255) NOT NULL, 
-            PRIMARY KEY (token))"""
+            password VARCHAR(255),
+            PRIMARY KEY (id))"""
 mycursor.execute(query)
 
 mycursor.close()
