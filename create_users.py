@@ -1,15 +1,17 @@
 import json
 import names
-import hashlib
+from utilities.hash_utilities import generate_hash
 
-data = {}
-data['users'] = []
+#try cath needed
+def create_users():
+    data = {}
+    data['users'] = []
 
-for i in range(50):
-    data['users'].append({
-        'user':names.get_full_name(),
-        'password':hashlib.sha224(b"12345").hexdigest()
-    })
+    for i in range(50):
+        data['users'].append({
+            'user':names.get_full_name(),
+            'password':generate_hash('12345')
+        })
 
-with open("users.json", 'w') as outfile:
-    json.dump(data, outfile)
+    with open("users.json", 'w') as outfile:
+        json.dump(data, outfile)
