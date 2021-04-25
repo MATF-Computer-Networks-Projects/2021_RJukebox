@@ -12,6 +12,7 @@ def create_users():
             'user':names.get_full_name(),
             'password':generate_hash('12345')
         })
+    print("test")
 
     with open("users.json", 'w') as outfile:
         json.dump(data, outfile)
