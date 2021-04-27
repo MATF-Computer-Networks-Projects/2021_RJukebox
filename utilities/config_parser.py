@@ -13,4 +13,4 @@ def parse_json_config(config_path: str) -> dict:
             return config
     except Exception as e:
         print(f"Error happened while parsing config file: {e}")
-        return
+        return {}
