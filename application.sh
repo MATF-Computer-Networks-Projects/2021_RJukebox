@@ -13,4 +13,8 @@ export TEST_RUN=true
 export FLASK_APP=application.py
 export FLASK_ENV=development
 
+# *** PYTHONPATH ***
+export PYTHONPATH=${PWD}:${PYTHONPATH}
+echo $PYTHONPATH
+
 flask run
