@@ -9,3 +9,4 @@ song_table = 'song_table.template'
 user_table = 'user_table.template'
 
 song_insert = 'song_insert.template'
+user_insert = 'user_insert.template'

@@ -6,22 +6,21 @@ import logging
 from utilities.hash_utilities import generate_hash
 
 
-def create_users():
+def create_users() -> list:
     try:
-        data = {}
-        data['users'] = []
+        logging.info("Creating test users.")
+        data = []
 
         for i in range(10):
-            data['users'].append({
+            data.append({
             'user':names.get_full_name(),
-            'password':generate_hash('12345')
+            'password':generate_hash(f'12{i}45')
             })
 
-        with open("users.json", 'w') as outfile:
-            json.dump(data, outfile)
+        return data
     except Exception as e:
         logging.exception(f"Exception raised while creating users: {e}")
-        raise e
+        return []
 
 
 def create_songs() -> list:
