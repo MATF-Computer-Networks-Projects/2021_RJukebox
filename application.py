@@ -17,7 +17,12 @@ setup_db()
 
 app = Flask(__name__)
 
+with app.app_context():
 
-@app.route('/')
-def index():
-    return "Main page"
+    import api.api_getter as api_get
+
+    app.register_blueprint(api_get.api_getter)
+
+    @app.route('/')
+    def index():
+        return "Main page"
