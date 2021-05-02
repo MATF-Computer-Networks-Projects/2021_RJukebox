@@ -1,6 +1,5 @@
 import logging
 
-from flask import current_app as app
 from flask import Blueprint
 from flask import make_response
 from flask import jsonify
