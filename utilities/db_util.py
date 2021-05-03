@@ -23,14 +23,15 @@ def connect_execute_query(query: str) -> list:
   try:
     my_db = connect_to_db(os.getenv('DB_NAME'))
     cursor = my_db.cursor()
-
-    execute_query(query, cursor)
-
-    return [result for result in cursor]
+    
+    result=execute_query(query, cursor)
+    logging.info("User added.")
+    return result
   except Exception as e:
     logging.error(f"Couldn't execute query [{query}]: {e}")
     return []
   finally:
+    my_db.commit()
     logging.info("Closing DB after executing query.")
 
     if cursor:
@@ -41,8 +42,8 @@ def connect_execute_query(query: str) -> list:
 
 def execute_query(query : str, cursor):
   try:
-    result = cursor.execute(query)
-    return result
+    cursor.execute(query)
+    return [result for result in cursor]
   except Exception as e:
     logging.error(f"Failure while executing query [{query}]:{e}")
     return None
