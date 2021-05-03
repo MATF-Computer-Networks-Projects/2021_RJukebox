@@ -13,3 +13,5 @@ Each API method __needs to start with /api/__<br>
 ## Folder content
 * __api_getter.py__
     - Consists of all API __GET__ endpoints.
+* __api_post.py__
+    - Consists of all API __POST__ endpoints.
