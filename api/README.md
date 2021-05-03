@@ -7,6 +7,9 @@ Each API method __needs to start with /api/__<br>
 - `/api/songs` - Returns list of all songs and respective info.
 
 
+## POST Endpoints
+- `/api/user_import` - Adds a user to db.users table
+
 ## Folder content
 * __api_getter.py__
     - Consists of all API __GET__ endpoints.
