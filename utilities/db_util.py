@@ -25,15 +25,15 @@ def connect_execute_query(query: str) -> list:
     cursor = my_db.cursor()
     
     result=execute_query(query, cursor)
-    logging.info("User added.")
     return result
   except Exception as e:
     logging.error(f"Couldn't execute query [{query}]: {e}")
     return []
   finally:
-    my_db.commit()
     logging.info("Closing DB after executing query.")
 
+    if my_db:
+      my_db.commit()
     if cursor:
       cursor.close()
     if my_db:
