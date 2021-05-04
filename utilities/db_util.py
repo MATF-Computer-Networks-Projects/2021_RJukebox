@@ -82,7 +82,7 @@ def check_if_column_exists(cursor, table_name: str , column: str) -> bool:
   try:
     template=load_db_template(defaults.check_for_column)
     query=template.render(table_name=table_name,column=column)
-    logging.info(f"Checking if table [{table_name}] exists.")
+    logging.info(f"Checking if column [{column}] in table [{table_name}] exists.")
     cursor.execute(query)
     if [result[0] for result in cursor]:
       logging.warning(f"Column [{column}] already exist.")
