@@ -118,6 +118,7 @@ print(response.json())
 ## PATCH Endpoints
 
 - Each endpoint that accepts PATCH requires `song_name`, `artist` and `update` parameters
+- __Note:__ If you want to change more than one parameter with one request, use POST
 
 | Parameter         | Value                                                             |
 | :---------------- | :-----------------------------------------------------------------|

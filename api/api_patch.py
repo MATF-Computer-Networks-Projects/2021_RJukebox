@@ -6,6 +6,7 @@ from flask import jsonify
 from flask import request
 
 from utilities.db_util import connect_execute_query
+from utilities.token_utilities import token_required
 from db_templates.load_template import load_db_template
 import defaults
 
@@ -33,6 +34,7 @@ def change_yt_link():
     return _handle_patch_request('yt_link')
 
 
+@token_required
 def _handle_patch_request(field: str):
     try:
         logging.info(f"User requested [{field}] change")
