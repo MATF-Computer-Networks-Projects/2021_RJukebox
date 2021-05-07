@@ -13,6 +13,8 @@ from utilities.token_utilities import token_required
 
 api_post = Blueprint('api_post', __name__)
 
+required_params = [ 'artist', 'song_name', 'genre', 'yt_link' ]
+
 
 # Routes go here
 @api_post.route('/api/user_import', methods=['POST'])
@@ -30,6 +32,9 @@ def user_import():
 @token_required
 def add_song():
     try:
+        for param in required_params:
+            if param not in request.args:
+                return make_response(f"{param} field is required", 401)
         artist=request.args.get('artist')
         genre=request.args.get('genre')
         song_name=request.args.get('song_name')

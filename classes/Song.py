@@ -17,7 +17,7 @@ class Song:
         self.yt_link = yt_link
     
     def check_if_song_exists(self) -> bool:
-        query=f"SELECT yt_link FROM songs WHERE yt_link=\'{self.yt_link}\'"
+        query=f"SELECT artist, song_name FROM songs WHERE artist=\'{self.artist}\' AND song_name=\'{self.song_name}\'"
         result=connect_execute_query(query)
         if result:
             logging.warning(f"Song [{self.artist}:{self.song_name}] you wanted to add already exists.")
