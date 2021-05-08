@@ -8,6 +8,7 @@ from utilities.db_util import connect_execute_query
 
 
 api_delete = Blueprint('api_delete', __name__)
+"""
 @api_delete.route('api/delete/user')
 def delete_user(user)
     return _handle_request() #sta treba vracati?
@@ -66,3 +67,4 @@ def invalid_param_value():
         if request.args.get('sort') not in sort_valid:
             return True
     return False
+    """

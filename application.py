@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template,flash,request
 
 import os
 import defaults
@@ -28,7 +28,31 @@ with app.app_context():
     app.register_blueprint(api_post.api_post)
     app.register_blueprint(api_delete.api_delete)
     app.register_blueprint(api_patch.api_patch)
-
-    @app.route('/')
+    app.config['SECRET_KEY']='asdasdasdasdasdasd'
+    @app.route('/', methods=['GET', 'POST'])
     def index():
-        return "Main page"
+        return render_template("home.html")
+    @app.route('/login',methods=['GET', 'POST'])
+    def login():
+        
+        return render_template("login.html")
+    @app.route('/logout')
+    def logout():
+        return "<p>logout</p>"
+    @app.route('/sign-up', methods=['GET', 'POST'])
+    def signup():
+        if request.method=='POST':
+            user=request.form.get('user')
+            password1=request.form.get('password1')
+            password2=request.form.get('password2')
+            if len(user) < 3:
+                flash('User must be greater then 3 characters',category='error')
+            elif password1 != password2:
+                flash('Password must match',category='error')
+            elif len(password1) < 4:
+                flash('Password must be greater then 4 characters',category='error')
+            else:
+            #add user to database
+                flash('Account created!',category="success")
+
+        return render_template("sign_up.html")

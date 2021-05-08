@@ -1,0 +1,21 @@
+[INFO : setup_db : 26] Database [rjukebox] already exists.
+[WARNING : create_table : 17] Table users already exists.
+[WARNING : create_table : 17] Table songs already exists.
+[INFO : load_db_template : 7] Loading template: check_for_column.template
+[INFO : check_if_column_exists : 85] Checking if column [votes] in table [songs] exists.
+[WARNING : check_if_column_exists : 88] Column [votes] already exist.
+[INFO : load_db_template : 7] Loading template: user_insert.template
+[INFO : create_users : 14] Creating test users.
+[INFO : input_user : 23] Users successfully added.
+[INFO : load_db_template : 7] Loading template: song_insert.template
+[INFO : create_songs : 32] Creating test songs.
+[INFO : input_songs : 41] Songs successfully added to DB.
+[INFO : _log : 113]  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 15:53:16] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 15:53:17] "[37mGET /login HTTP/1.1[0m" 200 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 15:53:18] "[37mGET /sign-up HTTP/1.1[0m" 200 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 15:53:19] "[37mGET /logout HTTP/1.1[0m" 200 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 15:53:22] "[37mGET /sign-up HTTP/1.1[0m" 200 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 15:53:23] "[37mGET /sign-up HTTP/1.1[0m" 200 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 16:30:58] "[37mGET /login HTTP/1.1[0m" 200 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 16:31:00] "[37mGET /login HTTP/1.1[0m" 200 -
