@@ -47,12 +47,11 @@ def _handle_request(wanted_params: str, endpoint: str):
 
         query = f"DELETE {values_str} FROM users{where_query}"
         songs = connect_execute_query(query)
-        
+
         return jsonify(response)
     except Exception as e:
         logging.error(f"Error happened while using /api/{endpoint} endpoint: {e}")
         return make_response('Could not get the results. Please try later.', 430)
-
 
 
 def invalid_parameters(params):
