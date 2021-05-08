@@ -11,7 +11,7 @@ from utilities.token_utilities import token_required
 
 api_getter = Blueprint('api_getter', __name__)
 
-song_params = ['song_name', 'artist', 'genre', 'yt_link']
+song_params = ['song_name', 'artist', 'genre', 'yt_link','votes']
 vote_params = ['sort', 'song_name', 'artist', 'genre', 'votes']
 
 genre_valid = ['Rock', 'HipHop', 'Metal', 'Pop', 'RnB']

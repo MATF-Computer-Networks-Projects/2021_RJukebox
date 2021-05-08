@@ -1,0 +1,45 @@
+[INFO : setup_db : 24] Created [rjukebox] database.
+[INFO : load_db_template : 7] Loading template: user_table.template
+[INFO : create_table : 12] Executing query: CREATE TABLE users (
+    id INT UNSIGNED AUTO_INCREMENT NOT NULL,
+    user VARCHAR(255), 
+    password VARCHAR(255),
+    token VARCHAR(255),
+    PRIMARY KEY (id)
+    )
+[INFO : create_table : 15] Table users created
+[INFO : load_db_template : 7] Loading template: song_table.template
+[INFO : create_table : 12] Executing query: CREATE TABLE songs (
+    id INT UNSIGNED AUTO_INCREMENT NOT NULL,
+    song_name VARCHAR(255),
+    artist VARCHAR(255),
+    genre VARCHAR(255),
+    yt_link VARCHAR(255),
+    PRIMARY KEY (id)
+    )
+[INFO : create_table : 15] Table songs created
+[INFO : load_db_template : 7] Loading template: check_for_column.template
+[INFO : check_if_column_exists : 85] Checking if column [votes] in table [songs] exists.
+[INFO : load_db_template : 7] Loading template: add_column.template
+[INFO : add_table_column : 75] Executing query: [ALTER TABLE songs
+ADD votes int DEFAULT 0 ]
+[INFO : add_table_column : 77] Added column [votes] to table [songs]
+[INFO : load_db_template : 7] Loading template: user_insert.template
+[INFO : create_users : 14] Creating test users.
+[INFO : input_user : 23] Users successfully added.
+[INFO : load_db_template : 7] Loading template: song_insert.template
+[INFO : create_songs : 32] Creating test songs.
+[INFO : input_songs : 41] Songs successfully added to DB.
+[INFO : _log : 113]  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 11:54:20] "[37mGET / HTTP/1.1[0m" 200 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 11:54:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 11:55:58] "[33mGET /user?id=3 HTTP/1.1[0m" 404 -
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 12:04:06] "[31m[1mGET /api/songs HTTP/1.1[0m" 403 -
+[ERROR : decor : 33] Error happened during authentication: [module 'jwt' has no attribute 'decode']
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 12:09:57] "[31m[1mGET /api/songs HTTP/1.1[0m" 405 -
+[ERROR : decor : 33] Error happened during authentication: [module 'jwt' has no attribute 'decode']
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 12:10:14] "[31m[1mGET /api/songs HTTP/1.1[0m" 405 -
+[ERROR : decor : 33] Error happened during authentication: [module 'jwt' has no attribute 'decode']
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 12:10:28] "[31m[1mGET /api/songs HTTP/1.1[0m" 405 -
+[ERROR : decor : 33] Error happened during authentication: [module 'jwt' has no attribute 'decode']
+[INFO : _log : 113] 127.0.0.1 - - [08/May/2021 12:11:54] "[31m[1mGET /api/songs HTTP/1.1[0m" 405 -
