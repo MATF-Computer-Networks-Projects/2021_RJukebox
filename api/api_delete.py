@@ -8,13 +8,9 @@ from utilities.db_util import connect_execute_query
 
 
 api_delete = Blueprint('api_delete', __name__)
-"""
-@api_delete.route('api/delete/user')
-def delete_user(user)
-    return _handle_request() #sta treba vracati?
- 
 
-@api_delete.route('api/delete/user')
+"""
+@api_delete.route('api/songs')
 def delete_song(song)
     return _handle_request() #sta treba vracati?
 

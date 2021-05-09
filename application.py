@@ -27,7 +27,7 @@ with app.app_context():
     app.register_blueprint(api_delete.api_delete)
     app.register_blueprint(api_patch.api_patch)
     app.config['SECRET_KEY']='asdasdasdasdasdasd'#dot env
-    @app.route('/',)  
+    @app.route('/')  
     def index():
         return render_template("home.html")
     @app.route('/login',methods=['GET', 'POST']) # brisi ifove samo post
@@ -35,7 +35,6 @@ with app.app_context():
         if request.method =='POST':
             user=request.form.get('user')
             password=request.form.get('password')
-            user=User.query.filter_by(user=user).first()
             if user:
                 if check_password_hash(user.password,password):
                     flash('Logged in successfully!', category='success')
@@ -54,28 +53,27 @@ with app.app_context():
     def main():
         return render_template('main.html')
 
-    @app.route('/sign-up', methods=['GET', 'POST'])
+    @app.route('/sign-up', methods=['GET','POST']) #samo get bez if
     def signup():
-        if request.method=='POST':
-            user=request.form.get('user')
-            password1=request.form.get('password1')
-            password2=request.form.get('password2')
-            user=User.query.filter_by(user=user).first()
-            if user:
-                flash('Email already exist',category='error')
+        if request.method =='GET':
+            return render_template('sign_up.html')
+        username = request.form.get('user')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
+        user = User(username, password1)
 
-            elif len(user) < 3:
-                flash('User must be greater then 3 characters',category='error')
-            elif password1 != password2:
-                flash('Password must match',category='error')
-            elif len(password1) < 4:
-                flash('Password must be greater then 4 characters',category='error')
-            else:
-            #add user to database
-                new_user=User(user=user,password=generate_password_hash(passowrd1,method='sha256'))
-                flash('Account created!',category="success")
-                db.session.add(new_user)
-                db.session.commit()
-                login_user(user,remember=True)
-                return redirect(url_for('views.model'))
-        return render_template("sign_up.html")
+        if password1 != password2:
+            flash('Password must match',category='error')
+            return render_template("sign_up.html")
+        
+        success = user.input_user()
+
+        if not success:
+            flash("User must have atleast 3 chars, password 4.", category='error')
+            return render_template("sign_up.html")
+        
+        token = user.get_encoded_token()
+        flash(f'Account created. Token: {token}',category="success")
+        return redirect(render_template('main.html'))
+            
+        
