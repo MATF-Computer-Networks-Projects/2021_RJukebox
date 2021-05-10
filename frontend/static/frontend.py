@@ -49,7 +49,6 @@ def signup():
         return render_template("sign_up.html")
         
     token = user.get_encoded_token()
-    #request.label(f'Account created. Token: {token}',category="success") kako ovde staviti label?
     return render_template('user.html',user=user.name,token=token)
 @frontend.route('/songs',methods=['GET','POST'])
 def songs():
