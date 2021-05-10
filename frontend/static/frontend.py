@@ -8,7 +8,7 @@ frontend = Blueprint('frontend', __name__)
 def index():
     return render_template("home.html")
 
-
+"""
 @frontend.route('/login',methods=['GET', 'POST']) # brisi ifove samo post
 def login():
     if request.method =='POST':
@@ -27,7 +27,7 @@ def login():
 @frontend.route('/logout')
 def logout():
     return render_template("home.html")
-
+"""
 
 @frontend.route('/sign-up', methods=['GET','POST']) #samo get bez if
 def signup():
@@ -50,7 +50,7 @@ def signup():
         
     token = user.get_encoded_token()
     #request.label(f'Account created. Token: {token}',category="success") kako ovde staviti label?
-    return render_template('user.html')
+    return render_template('user.html',user=user.name,token=token)
 @frontend.route('/songs',methods=['GET','POST'])
 def songs():
     if request.method =='GET':
@@ -69,7 +69,7 @@ def songs():
         return render_template("songs.html")
         
    
-    return render_template('added_song.html')
+    return render_template('added_song.html',name=song.song_name)
 @frontend.route('/charts')
 def charts():
     return render_template('charts.html')    

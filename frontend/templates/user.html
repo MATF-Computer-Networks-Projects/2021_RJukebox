@@ -1,9 +1,16 @@
 {% extends "base2.html" %} {% block title %}User{% endblock %} {% block content
     %}
-    %{with user=get_username}
-    <h1 align="center">Hello {{user}} [Kako ubaciti usera?] </h1>
-    <p>Your token for entering songs is[Kako ubaciti token?] {{token}} </p>
-    <p>Proceed to Songs page</p>
+    <h1 align="center">Hello {{user}} </h1>
+    <br>
+
+    <p>Your token for entering songs is:</p>
+    <br>
+    {{token}}
+
+    <br>
+    <br>
+    <br>
+    <h3>Please proceed to Songs page</h3>
 
 
 

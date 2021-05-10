@@ -26,6 +26,6 @@ with app.app_context():
     app.register_blueprint(api_delete.api_delete)
     app.register_blueprint(api_patch.api_patch)
     app.register_blueprint(front.frontend)
-    app.config['SECRET_KEY']='asdasdasdasdasdasd'#dot env
+    #app.config['SECRET_KEY']='asdasdasdasdasdasd'#dot env
   
         
