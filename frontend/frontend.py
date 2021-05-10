@@ -1,8 +1,22 @@
-from flask import Flask, Blueprint, render_template,flash,request,redirect,url_for #jedno po jedno
+from flask import Flask
+from flask import Blueprint
+from flask import render_template
+from flask import flash
+from flask import request
+from flask import redirect 
+from flask import url_for
+
 from utilities.hash_utilities import generate_hash
+
 from classes.User import User
+
 from classes.Song import Song
-from flask_login import login_user, login_required, logout_user, current_user#jedno po jedno
+
+from flask_login import login_user
+from flask_login import login_required
+from flask_login import logout_user
+from flask_login import  current_user
+
 import os
 import jwt
 import logging
@@ -80,11 +94,9 @@ def songs():
 
 @frontend.route('/charts',methods=['GET','POST'])
 def charts():
-    if request.method=='GET':
-        render_template('charts.html')
-   # genre=request.form['genre']
-   # print(genre)
-    return render_template('charts.html')    
+    return render_template('charts.html') 
+    
+       
 @frontend.route('/user')
 def main():
     return render_template('user.html')
