@@ -66,8 +66,9 @@ def _handle_request(wanted_params: list, endpoint: str, top_count: int = 0):
 
         sort_desc = 'sort' in request.args and request.args.get('sort') == 'desc'
 
-        logging.info(f"Results will be sorted in {'descending' if sort_desc else 'ascending'} order")
-        response = sorted(response, key=lambda k: k['votes'], reverse=sort_desc)
+        if 'votes' in endpoint:
+            logging.info(f"Results will be sorted in {'descending' if sort_desc else 'ascending'} order")
+            response = sorted(response, key=lambda k: k['votes'], reverse=sort_desc)
 
         if top_count != 0:
             logging.info(f"User requested first {top_count} results.")
