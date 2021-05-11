@@ -1,6 +1,5 @@
 #!/bin/bash -ex
 
-py --version
 echo "*** Installing python dependencies ***"
 pip3 install -r requirements.txt
 
