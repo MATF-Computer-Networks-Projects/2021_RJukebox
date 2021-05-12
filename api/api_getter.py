@@ -63,7 +63,7 @@ def _handle_request(wanted_params: list, endpoint: str, top_count: int = 0):
         songs = connect_execute_query(query)
 
         response = [ dict(zip(values, song)) for song in songs ]
-
+        
         sort_desc = 'sort' in request.args and request.args.get('sort') == 'desc'
 
         if 'votes' in endpoint:
@@ -72,7 +72,7 @@ def _handle_request(wanted_params: list, endpoint: str, top_count: int = 0):
 
         if top_count != 0:
             logging.info(f"User requested first {top_count} results.")
-            response = response[-top_count:] if sort_desc else response[:top_count]
+            response = response[:top_count] if sort_desc else response[-top_count:]
 
         return jsonify(response)
     except Exception as e:
